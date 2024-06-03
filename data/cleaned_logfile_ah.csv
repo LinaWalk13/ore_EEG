@@ -186,15 +186,15 @@ Unnamed: 0,id,age,Ethnicity,gender,i,response,reaction_time,accuracy,img_emotion
 184,ah,40,Danish,male,./final_images\BM18_NO_neutral.jpg,e,191.61275819991715,neutral,neutral,black,male,40,100,140,42
 185,ah,40,Danish,male,./final_images\WF13_HC_happy.jpg,i,192.47171969991177,correct,happy,white,female,20,200,220,23
 186,ah,40,Danish,male,./final_images\AF09_HC_happy.jpg,i,193.5056986999698,correct,happy,asian,female,20,200,220,21
-187,ah,40,Danish,male,./final_images\WF05_NC_neutral.jpg,e,194.45775950001556,neutral,neutral,white,female,40,100,140,43
+187,ah,40,Danish,male,./final_images\WF05_NC_neutral.jpg,e,194.4577595000156,neutral,neutral,white,female,40,100,140,43
 188,ah,40,Danish,male,./final_images\WF13_SO_sad.jpg,e,195.2877378999256,correct,sad,white,female,30,100,130,33
 189,ah,40,Danish,male,./final_images\AF07_SO_sad.jpg,e,195.9727503999602,correct,sad,asian,female,30,100,130,31
 190,ah,40,Danish,male,./final_images\BF01_SO_sad.jpg,e,196.7017015998717,correct,sad,black,female,30,100,130,32
-191,ah,40,Danish,male,./final_images\WF09_SC_sad.jpg,e,197.50570089998652,correct,sad,white,female,30,100,130,33
+191,ah,40,Danish,male,./final_images\WF09_SC_sad.jpg,e,197.5057008999865,correct,sad,white,female,30,100,130,33
 192,ah,40,Danish,male,./final_images\BM11_SC_sad.jpg,e,199.15269949985668,correct,sad,black,male,30,100,130,32
 193,ah,40,Danish,male,./final_images\WM11_HO_happy.jpg,i,199.99066749983467,correct,happy,white,male,20,200,220,23
 194,ah,40,Danish,male,./final_images\BM04_HC_happy.jpg,i,200.8306762999855,correct,happy,black,male,20,200,220,22
-195,ah,40,Danish,male,./final_images\BM12_SC_sad.jpg,e,201.98567959992212,correct,sad,black,male,30,100,130,32
+195,ah,40,Danish,male,./final_images\BM12_SC_sad.jpg,e,201.9856795999221,correct,sad,black,male,30,100,130,32
 196,ah,40,Danish,male,./final_images\BF02_SC_sad.jpg,e,202.75170629983768,correct,sad,black,female,30,100,130,32
 197,ah,40,Danish,male,./final_images\AF06_SO_sad.jpg,e,203.34778139996345,correct,sad,asian,female,30,100,130,31
 198,ah,40,Danish,male,./final_images\WF03_SO_sad.jpg,e,204.4177919998765,correct,sad,white,female,30,100,130,33
@@ -205,7 +205,7 @@ Unnamed: 0,id,age,Ethnicity,gender,i,response,reaction_time,accuracy,img_emotion
 203,ah,40,Danish,male,./final_images\WF08_NC_neutral.jpg,e,209.80069579998963,neutral,neutral,white,female,40,100,140,43
 204,ah,40,Danish,male,./final_images\BM01_NO_neutral.jpg,e,210.7337002998684,neutral,neutral,black,male,40,100,140,42
 205,ah,40,Danish,male,./final_images\BM12_HO_happy.jpg,i,211.3867124998942,correct,happy,black,male,20,200,220,22
-206,ah,40,Danish,male,./final_images\WF11_NO_neutral.jpg,e,212.19670359999876,neutral,neutral,white,female,40,100,140,43
+206,ah,40,Danish,male,./final_images\WF11_NO_neutral.jpg,e,212.1967035999988,neutral,neutral,white,female,40,100,140,43
 207,ah,40,Danish,male,./final_images\WF07_NO_neutral.jpg,e,213.46270160004497,neutral,neutral,white,female,40,100,140,43
 208,ah,40,Danish,male,./final_images\WF10_HC_happy.jpg,i,214.11075440002605,correct,happy,white,female,20,200,220,23
 209,ah,40,Danish,male,./final_images\BF17_SO_sad.jpg,e,214.81966429995373,correct,sad,black,female,30,100,130,32
@@ -243,7 +243,7 @@ Unnamed: 0,id,age,Ethnicity,gender,i,response,reaction_time,accuracy,img_emotion
 241,ah,40,Danish,male,./final_images\WF06_SC_sad.jpg,e,250.84574459982105,correct,sad,white,female,30,100,130,33
 242,ah,40,Danish,male,./final_images\AF08_SC_sad.jpg,e,251.88269889983349,correct,sad,asian,female,30,100,130,31
 243,ah,40,Danish,male,./final_images\AM08_HO_happy.jpg,i,252.72468019998632,correct,happy,asian,male,20,200,220,21
-244,ah,40,Danish,male,./final_images\BF17_SC_sad.jpg,e,255.04563779989255,correct,sad,black,female,30,100,130,32
+244,ah,40,Danish,male,./final_images\BF17_SC_sad.jpg,e,255.0456377998925,correct,sad,black,female,30,100,130,32
 245,ah,40,Danish,male,./final_images\WM09_NC_neutral.jpg,e,255.85563019989056,neutral,neutral,white,male,40,100,140,43
 246,ah,40,Danish,male,./final_images\AM07_HC_happy.jpg,i,256.6405960998964,correct,happy,asian,male,20,200,220,21
 247,ah,40,Danish,male,./final_images\WM06_SC_sad.jpg,e,257.44360059988685,correct,sad,white,male,30,100,130,33
