@@ -1,0 +1,188 @@
+---
+title: "Behavioural Analysis"
+author: "Katharina Hellmund"
+date: "2024-05-29"
+output: pdf_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+pacman::p_load(tidyverse, hrbrthemes, gridExtra, grid)
+setwd("~/Desktop/UNI/4. semester/EXAMS/NEURO")
+```
+
+```{r}
+# our theme of choice
+theme_set(theme_ipsum())
+
+# our main colour palette
+my_palette <- c("#d0b8dc", "#fec7de", "#ffb3cf")
+
+# Custom function to apply this palette to a plot
+apply_custom_palette <- function() {
+  list(
+    scale_fill_manual(values = my_palette),
+    scale_color_manual(values = my_palette)
+  )
+}
+```
+
+# Behavioural Analysis
+
+First importing logfiles, and merging into one
+
+```{r}
+logfile1 <- read_csv("logfiles/logfile_a_2024-05-02_12h26.58.218.csv")
+logfile2 <- read_csv("logfiles/logfile_g_2024-02-29_14h27.56.923.csv")
+#logfile 3 is empty :( 
+#logfile3 <- read_csv("logfiles/logfile_t_2024-02-29_14h03.11.563.csv")
+
+#Merging :D 
+logfiles <- bind_rows(logfile1, logfile2)
+
+#wont remember clearly what e and i represent later, so renaming them
+logfiles <- logfiles %>%
+  mutate(response = case_when(
+    response == "i" ~ "happy",
+    response == "e" ~ "sad",
+    TRUE ~ response  
+  ))
+
+#the asians
+logfiles <- logfiles %>% 
+    mutate(img_ethnicity = if_else(grepl("A", i), "asian", img_ethnicity))
+
+rm(logfile1, logfile2)
+```
+
+## Accuracy plots and count
+
+```{r}
+racial_count <- logfiles %>% 
+  ggplot(aes(x=img_ethnicity, fill=img_ethnicity))+
+  geom_bar()+
+  apply_custom_palette()+
+  labs(
+    title = "Racial stimuli count distribution",
+    x = "Ethnicity",
+    y = "Count"
+  ) +
+  theme(legend.position = "none")
+ggsave("plots/racial_count.png", racial_count, width = 16, height = 10, dpi = 300)
+  
+#I cant just facet wrap because the count is uneven :( so taking a detour
+asian <- logfiles %>% 
+  filter(img_ethnicity=="asian") %>% 
+ggplot(aes(x = "", fill = accuracy)) +
+  geom_bar(width = 1, stat = "count") +  # width = 1 to make bars go all around the circle
+  coord_polar(theta = "y") +  # Convert the bar chart to a pie chart
+  labs(
+    title = "Asian stimuli",
+    x = NULL,  
+    y = NULL  
+  ) +
+apply_custom_palette()
+
+black <- logfiles %>% 
+    filter(img_emotion!="neutral") %>% 
+  filter(img_ethnicity=="black") %>% 
+ggplot(aes(x = "", fill = accuracy)) +
+  geom_bar(width = 1, stat = "count") +  # width = 1 to make bars go all around the circle
+  coord_polar(theta = "y") +  # Convert the bar chart to a pie chart
+  labs(
+    title = "Black stimuli",
+    x = NULL,  
+    y = NULL  
+  ) +
+apply_custom_palette()
+
+white <- logfiles %>% 
+  filter(img_ethnicity=="white") %>% 
+    filter(img_emotion!="neutral") %>% 
+ggplot(aes(x = "", fill = accuracy)) +
+  geom_bar(width = 1, stat = "count") +  # width = 1 to make bars go all around the circle
+  coord_polar(theta = "y") +  # Convert the bar chart to a pie chart
+  labs(
+    title = "White stimuli",
+    x = NULL,  
+    y = NULL  
+  ) +
+apply_custom_palette()
+
+all_plots <- grid.arrange(
+  arrangeGrob(black, white, asian, ncol = 3)
+  )
+ggsave("plots/racial_accuracy.png", all_plots, width = 16, height = 6, dpi = 300)
+rm(asian, black, white, all_plots)
+```
+
+## Reaction time
+
+```{r}
+reaction_by_race <- logfiles %>% 
+  ggplot(aes(x=reaction_time, colour = img_ethnicity))+
+  geom_density(size=1.5)+
+  apply_custom_palette()+
+  facet_wrap(~img_emotion, nrow = 1)+
+  labs(
+    title = "Reaction time by racial stimuli",
+    x = "Density",
+    y = "Reaction time"
+  )
+ggsave("plots/reaction_by_race.png", reaction_by_race, width = 16, height = 6, dpi = 300)
+```
+
+## Reaction time over time
+
+```{r}
+reaction_over_time <- logfiles %>% 
+  ggplot(aes(x=...1, y=reaction_time, colour = img_ethnicity))+
+  geom_point(size=1)+
+  apply_custom_palette()+
+  facet_wrap(~img_emotion, nrow = 1)+
+  labs(
+    title = "Reaction time by racial stimuli over time",
+    x = "Density",
+    y = "Reaction time"
+  )
+ggsave("plots/reaction_over_time.png", reaction_over_time, width = 16, height = 6, dpi = 300)
+```
+
+## Neutral face perception
+
+OBS: NO NEUTRAL ASIAN FACES
+
+```{r}
+
+black <- logfiles %>% 
+    filter(img_emotion=="neutral") %>% 
+  filter(img_ethnicity=="black") %>% 
+ggplot(aes(x = "", fill = response)) +
+  geom_bar(width = 1, stat = "count") +  # width = 1 to make bars go all around the circle
+  coord_polar(theta = "y") +  # Convert the bar chart to a pie chart
+  labs(
+    title = "Black neutral stimuli",
+    x = NULL,  
+    y = NULL  
+  ) +
+apply_custom_palette()
+
+white <- logfiles %>% 
+    filter(img_emotion=="neutral") %>% 
+  filter(img_ethnicity=="white") %>% 
+ggplot(aes(x = "", fill = response)) +
+  geom_bar(width = 1, stat = "count") +  # width = 1 to make bars go all around the circle
+  coord_polar(theta = "y") +  # Convert the bar chart to a pie chart
+  labs(
+    title = "White neutral stimuli",
+    x = NULL,  
+    y = NULL  
+  ) +
+apply_custom_palette()
+
+all_plots <- grid.arrange(
+  arrangeGrob(black, white, ncol = 2)
+  )
+ggsave("plots/neutral_face_perception.png", all_plots, width = 16, height = 6, dpi = 300)
+rm(black, white, all_plots)
+```
